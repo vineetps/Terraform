@@ -1,0 +1,7 @@
+{
+    "commandToExecute": "powershell -ExecutionPolicy Unrestricted -file winrm.ps1 \"linuxdemo.westus.cloudapp.azure.com\"",
+    "fileUris": [
+        "/winrm.ps1",
+	"/winrmconf.cmd"    
+]
+}

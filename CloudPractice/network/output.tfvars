@@ -1,0 +1,6 @@
+Network_Interface="/subscriptions/505a17f3-6019-4221-b9c8-e28eea2d8603/resourceGroups/Terraform-Azure/providers/Microsoft.Network/networkInterfaces/Terraform-NetworkInterface"
+Private_IP="10.0.1.4"
+Public_IP="40.112.221.5"
+Resourrce_Group_Location="westus"
+Resourrce_Group_Name="Terraform-Azure"
+Security_Group_ID="/subscriptions/505a17f3-6019-4221-b9c8-e28eea2d8603/resourceGroups/Terraform-Azure/providers/Microsoft.Network/networkSecurityGroups/Terraform-SG"
