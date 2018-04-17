@@ -20,8 +20,11 @@ resource "azurerm_network_security_group" "securitygroup" {
   location            = "${data.azurerm_resource_group.rg.location}"
   resource_group_name = "${data.azurerm_resource_group.rg.name}"
 tags {
-     Owner = "${var.owner_tag}"
-    Business-Unit = "${var.business_unit_tag}"
+    	Technical-Owner = "${var.techniacl_owner_tag}"
+    	Business-Owner = "${var.business_owner_tag}"
+    	Project = "${var.project_tag}"
+	Cost-Code = "${var.cost_coded_tag}"
+	Schedule-Type = "var.schedule_type_tag}"
   }
   security_rule {
     name                       = "All-TCP"
@@ -61,8 +64,12 @@ resource "azurerm_public_ip" "eip" {
   public_ip_address_allocation = "static"
 
   tags {
-    Owner = "${var.owner_tag}"
-    Business-Unit = "${var.business_unit_tag}"
+        Technical-Owner = "${var.techniacl_owner_tag}"
+        Business-Owner = "${var.business_owner_tag}"
+        Project = "${var.project_tag}"
+        Cost-Code = "${var.cost_coded_tag}"
+        Schedule-Type = "var.schedule_type_tag}"
+
   }
 }
 
@@ -74,9 +81,13 @@ resource "azurerm_network_interface" "networkinterface" {
   resource_group_name = "${data.azurerm_resource_group.rg.name}"
   network_security_group_id = "${azurerm_network_security_group.securitygroup.id}"
   tags {
-         Owner = "${var.owner_tag}"
-    Business-Unit = "${var.business_unit_tag}"
-    }
+	 Technical-Owner = "${var.techniacl_owner_tag}"
+        Business-Owner = "${var.business_owner_tag}"
+        Project = "${var.project_tag}"
+        Cost-Code = "${var.cost_coded_tag}"
+        Schedule-Type = "var.schedule_type_tag}"
+   
+  }
   ip_configuration {
     name                          = "Terraform"
     subnet_id                     = "${data.azurerm_subnet.subnet.id}"
@@ -96,8 +107,12 @@ resource "azurerm_managed_disk" "disk" {
   create_option        = "Empty"
   disk_size_gb         = "${var.managed_disk_size}"
 tags {
- Owner = "${var.owner_tag}"
-    Business-Unit = "${var.business_unit_tag}"
+  Technical-Owner = "${var.techniacl_owner_tag}"
+        Business-Owner = "${var.business_owner_tag}"
+        Project = "${var.project_tag}"
+        Cost-Code = "${var.cost_coded_tag}"
+        Schedule-Type = "var.schedule_type_tag}"
+
 }
 
 }
@@ -105,7 +120,7 @@ tags {
 ## Linux VM
 
 resource "azurerm_virtual_machine" "vm" {
-  name                  = "vm-${var.vm_name}"
+  name                  = "${var.vm_name}"
   location              = "${data.azurerm_resource_group.rg.location}"
   resource_group_name   = "${data.azurerm_resource_group.rg.name}"
   network_interface_ids = ["${azurerm_network_interface.networkinterface.id}"]
@@ -138,7 +153,7 @@ resource "azurerm_virtual_machine" "vm" {
   }
 
   os_profile {
-    computer_name  = "${var.hostname}"
+    computer_name  = "${var.vm_name}"
     admin_username = "${var.username}"
     admin_password = "${var.password}"
   }
@@ -148,8 +163,12 @@ resource "azurerm_virtual_machine" "vm" {
   }
 
   tags {
-     Owner = "${var.owner_tag}"
-    Business-Unit = "${var.business_unit_tag}"
+      Technical-Owner = "${var.techniacl_owner_tag}"
+        Business-Owner = "${var.business_owner_tag}"
+        Project = "${var.project_tag}"
+        Cost-Code = "${var.cost_coded_tag}"
+        Schedule-Type = "var.schedule_type_tag}"
+
 }
 
 }
